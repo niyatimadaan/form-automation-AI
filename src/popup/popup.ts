@@ -1,6 +1,6 @@
 import { StorageManager } from '../storage/StorageManager';
 import { Profile } from '../types/profile';
-import { createDefaultProfile } from '../data/niyati-profile';
+import { createDefaultProfile } from '../data/default-profile';
 
 const storageManager = new StorageManager();
 let profiles: Profile[] = [];
