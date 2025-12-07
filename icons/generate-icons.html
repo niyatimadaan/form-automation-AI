@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Icons</title>
+</head>
+<body>
+  <h1>Icon Generator</h1>
+  <p>Open this file in a browser and right-click each canvas to save as PNG</p>
+  
+  <h2>16x16</h2>
+  <canvas id="icon16" width="16" height="16"></canvas>
+  
+  <h2>48x48</h2>
+  <canvas id="icon48" width="48" height="48"></canvas>
+  
+  <h2>128x128</h2>
+  <canvas id="icon128" width="128" height="128"></canvas>
+  
+  <script>
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+      
+      // Background
+      ctx.fillStyle = '#1a73e8';
+      ctx.fillRect(0, 0, size, size);
+      
+      // Form lines
+      ctx.fillStyle = 'white';
+      const lineHeight = size * 0.06;
+      const lineSpacing = size * 0.15;
+      const startY = size * 0.3;
+      
+      for (let i = 0; i < 3; i++) {
+        const y = startY + (i * lineSpacing);
+        const width = i === 2 ? size * 0.5 : size * 0.7;
+        ctx.fillRect(size * 0.15, y, width, lineHeight);
+      }
+      
+      // Checkmark circle
+      ctx.fillStyle = '#4CAF50';
+      ctx.beginPath();
+      ctx.arc(size * 0.75, size * 0.75, size * 0.12, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Checkmark
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = size * 0.02;
+      ctx.beginPath();
+      ctx.moveTo(size * 0.70, size * 0.75);
+      ctx.lineTo(size * 0.73, size * 0.78);
+      ctx.lineTo(size * 0.80, size * 0.70);
+      ctx.stroke();
+    }
+    
+    drawIcon(document.getElementById('icon16'));
+    drawIcon(document.getElementById('icon48'));
+    drawIcon(document.getElementById('icon128'));
+  </script>
+</body>
+</html>
